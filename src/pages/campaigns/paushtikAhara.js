@@ -1,7 +1,7 @@
 import img from "./PaushtikAhara.jpg";
 import { Link } from "react-router-dom";
 
-const BreakfastProgram = () => {
+const PaushtikAhara = () => {
   return (
     <div className="desc-container text-center">
       <img src={img} className=" w-100 p-2 " alt="" />
@@ -85,7 +85,7 @@ const BreakfastProgram = () => {
           where everyone thrives.
         </p>
         <br />
-        <Link to="/registration">
+        <Link to="/donation">
           <input
             type="button"
             value=" &#x2764; Donate "
@@ -96,4 +96,4 @@ const BreakfastProgram = () => {
     </div>
   );
 };
-export default BreakfastProgram;
+export default PaushtikAhara;

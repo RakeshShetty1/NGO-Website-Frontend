@@ -118,7 +118,9 @@ function VolunteerRegistration() {
       console.log(error);
       toast.error("Error occurred while adding volunteer");
     } finally {
-      setTimeout(() => {}, 2000);
+      setTimeout(() => {
+        navigate("/home");
+      }, 2000);
     }
   };
 

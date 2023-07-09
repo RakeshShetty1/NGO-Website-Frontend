@@ -3,7 +3,7 @@ import img1 from "./reachmdm23.jpg";
 import img2 from "./childrenssofar.png";
 import { Link } from "react-router-dom";
 
-const MidDayMeal = () => {
+const SwasthyaAhara = () => {
   return (
     <div>
       <img src={img} className=" w-100 p-2 " alt="" />
@@ -41,7 +41,7 @@ const MidDayMeal = () => {
         providing nutritious meals every day.
       </div>
       <div className="text-center">
-        <Link to="/registration">
+        <Link to="/donation">
           <input
             type="button"
             value=" &#x2764; Donate "
@@ -61,7 +61,7 @@ const MidDayMeal = () => {
                 Contribute to feed nutritious meals to mid-day meal
                 beneficiaries. Gain tax deduction under 80G of income tax act.
               </p>
-              <Link to="/registration">
+              <Link to="/donation">
                 <input
                   type="button"
                   value=" &#x2764; Donate "
@@ -81,7 +81,7 @@ const MidDayMeal = () => {
                 family
               </p>
 
-              <Link to="/volunteers">
+              <Link to="/volunteer-registration">
                 <input
                   type="button"
                   value="DoBe A Volunteer"
@@ -95,4 +95,4 @@ const MidDayMeal = () => {
     </div>
   );
 };
-export default MidDayMeal;
+export default SwasthyaAhara;

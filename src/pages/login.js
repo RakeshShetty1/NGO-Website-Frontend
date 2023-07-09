@@ -26,21 +26,21 @@ function Login() {
 
   let loginAction = async (e) => {
     e.preventDefault();
-  
+
     try {
       formRef.current.classList.add("was-validated");
       let formStatus = formRef.current.checkValidity();
       if (!formStatus) {
         return;
       }
-  
+
       // Check if the user credentials match
       let url = "http://localhost:9090/login";
       let data = {
         email: user.email,
         password: user.password,
       };
-  
+
       let response = await fetch(url, {
         method: "POST",
         headers: {
@@ -48,15 +48,26 @@ function Login() {
         },
         body: JSON.stringify(data),
       });
-  
+
       if (response.ok) {
         let result = await response.json();
         if (result) {
           localStorage.setItem("loginStatus", "true");
-          if (user.email === "rakesh333@gmail.com" && user.password === "rakesh@123") {
+          if (
+            user.email === "rakesh333@gmail.com" &&
+            user.password === "rakesh@123"
+          ) {
             toast.success("Welcome admin");
             setTimeout(() => {
-              navigate("/admin", { replace: true });
+              navigate("/donors", { replace: true });
+            }, 1000);
+          } else if (
+            user.email === "gitesh122@gmail.com" &&
+            user.password === "gitesh@123"
+          ) {
+            toast.success("Welcome admin");
+            setTimeout(() => {
+              navigate("/volunteers", { replace: true });
             }, 1000);
           } else {
             toast.success("Login successful");
@@ -79,7 +90,6 @@ function Login() {
       }, 1000);
     }
   };
-  
 
   return (
     <>

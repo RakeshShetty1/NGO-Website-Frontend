@@ -43,7 +43,8 @@ const Footer = () => {
             <h5 style={{ color: "#009933" }}>Connect with Us</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="https://www.facebook.com/login.php" target="_blank">
+                <a href="https://www.facebook.com/
+                " target="_blank">
                   <i className="fab fa-facebook"></i> Facebook
                 </a>
               </li>
@@ -54,7 +55,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://rohan-kegade.github.io/Projects/"
+                  href="https://www.instagram.com/"
                   target="_blank"
                 >
                   <i className="fab fa-instagram"></i> Instagram

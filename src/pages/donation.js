@@ -33,55 +33,7 @@ function Donation() {
     let newuser = { ...user, campaign: e.target.value };
     setUser(newuser);
   };
-  // // let donateAction = async () => {
-  //   // try {
-  //   //   event.preventDefault();
-  //   //   formRef.current.classList.add("was-validated");
-  //   //   let formStatus = formRef.current.checkValidity();
-  //   //   if (!formStatus) {
-  //   //     return;
-  //   //   }
-
-  //   let url = "http://localhost:9090/donation";
-  //   let data = {
-  //     name: user.name,
-  //     email: user.email,
-  //     campaign: user.campaign,
-  //     amount: user.amount,
-  //   };
-  //   let response = await axios.post(url, data);
-  //   console.log(response.data);
-
-  //   //   if (response.status !== 200) {
-  //   //     let serverMsg = await response.text();
-  //   //     throw new Error(serverMsg);
-  //   //   }
-
-  //   //   let newuser = {
-  //   //     name: "",
-  //   //     email: "",
-  //   //     campaign: "",
-  //   //     amount: "",
-  //   //   };
-  //   //   setUser(newuser);
-
-  //   //   formRef.current.classList.remove("was-validated");
-
-  //   //   alert(
-  //   //     "Thank You! Your donation will have a lasting impact, and we are honored to have you as a partner in our efforts."
-  //   //   );
-  //   //   navigate("/", { replace: true });
-  //   //   setIsSuccess(true);
-  //   // } catch (err) {
-  //   //   alert("You are already registered with us. Kindly login.");
-  //   //   setIsError(true);
-  //   // } finally {
-  //   //   setTimeout(() => {
-  //   //     setIsSuccess(false);
-  //   //     setIsError(false);
-  //   //   }, 5000);
-  //   // }
-  // };
+ 
 
   let donateAction = async (e) => {
     e.preventDefault(); // Prevent the default form submission
@@ -108,7 +60,7 @@ function Donation() {
         autoClose: 3000,
         onClose: () => {
           setTimeout(() => {
-            window.location.reload();
+            navigate("/home");
           }, 2000);
         },
       });

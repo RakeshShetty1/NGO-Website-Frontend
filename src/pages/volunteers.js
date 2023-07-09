@@ -1,88 +1,335 @@
-import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import img from "../Images/banners/volunteer.png";
+// import React, { useEffect, useState } from "react";
+// import { toast, ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faUserPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+// import { OverlayTrigger, Tooltip } from "react-bootstrap";
+// import { Link } from "react-router-dom";
 
-function Voluteers() {
-  // const [userList, setUserList] = useState([]);
+// function Volunteers() {
+//   const [volunteerList, setVolunteerList] = useState([]);
 
-  // useEffect(() => {
-  //   getAllUserAction();
-  // }, []);
+//   useEffect(() => {
+//     getVolunteers();
+//   }, []);
 
-  // const getAllUserAction = async () => {
-  //   let url = `http://localhost:4000/find-all-volunteer`;
-  //   let res = await fetch(url);
-  //   let list = await res.json();
+//   const getVolunteers = async () => {
+//     try {
+//       const url = "http://localhost:9090/volunteers";
+//       const res = await fetch(url);
+//       const list = await res.json();
+//       setVolunteerList(list);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  //   setUserList([...list]);
-  // };
+//   const deleteVolunteer = async (id) => {
+//     try {
+//       const confirmDelete = window.confirm(
+//         "Do you want to delete this volunteer?"
+//       );
+//       if (confirmDelete) {
+//         const url = `http://localhost:9090/volunteer/${id}`;
+//         const res = await fetch(url, {
+//           method: "DELETE",
+//         });
+//         if (res.status === 200) {
+//           toast.success("Volunteer deleted successfully");
+//           getVolunteers();
+//         } else {
+//           throw new Error("Failed to delete volunteer");
+//         }
+//       }
+//     } catch (error) {
+//       toast.error(error.message);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <div
+//         className="row justify-content-center"
+//         style={{ backgroundColor: "#c3e6cb", height: "100vh" }}
+//       >
+//         <div className="col-sm-12 col-md-11">
+//           <h1
+//             className="form-control-lg d-flex justify-content-center"
+//             style={{ color: "white", backgroundColor: "#28a745" }}
+//           >
+//             Volunteer List
+//           </h1>
+         
+//           <div className="form-control">
+//             <table className="table">
+//               <thead>
+//                 <tr>
+//                   <th scope="col">#</th>
+//                   <th scope="col">Name</th>
+//                   <th scope="col">Email</th>
+//                   <th scope="col">Number</th>
+//                   <th scope="col">City</th>
+//                   <th scope="col">State</th>
+//                   <th scope="col">Action</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {volunteerList.map((volunteer, index) => (
+//                   <tr key={volunteer.id}>
+//                     <th scope="row">{index + 1}</th>
+//                     <td>{volunteer.name}</td>
+//                     <td>{volunteer.email}</td>
+//                     <td>{volunteer.mobileNo}</td>
+//                     <td>{volunteer.city}</td>
+//                     <td>{volunteer.state}</td>
+//                     <td className="fs-6">
+//                       <OverlayTrigger
+//                         overlay={
+//                           <Tooltip id="tooltip">Delete Volunteer</Tooltip>
+//                         }
+//                         placement="top"
+//                       >
+//                         <button
+//                           className="btn"
+//                           onClick={() => deleteVolunteer(volunteer.id)}
+//                           style={{ backgroundColor: "#c3e6cb" }}
+//                         >
+//                           <FontAwesomeIcon icon={faUserSlash} />
+//                         </button>
+//                       </OverlayTrigger>
+//                     </td>
+//                   </tr>
+//                 ))}
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//       </div>
+//       <ToastContainer />
+//     </>
+//   );
+// }
+
+// export default Volunteers;
+
+import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+function Volunteers() {
+  const [volunteerList, setVolunteerList] = useState([]);
+  const [editUser, setEditUser] = useState(null);
+  const [editedUser, setEditedUser] = useState({});
+
+  useEffect(() => {
+    getVolunteers();
+  }, []);
+
+  const getVolunteers = async () => {
+    try {
+      const url = "http://localhost:9090/volunteers";
+      const res = await fetch(url);
+      const list = await res.json();
+      setVolunteerList(list);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteVolunteer = async (id) => {
+    try {
+      const confirmDelete = window.confirm(
+        "Do you want to delete this volunteer?"
+      );
+      if (confirmDelete) {
+        const url = `http://localhost:9090/volunteer/${id}`;
+        const res = await fetch(url, {
+          method: "DELETE",
+        });
+        if (res.status === 200) {
+          toast.success("Volunteer deleted successfully");
+          getVolunteers();
+        } else {
+          throw new Error("Failed to delete volunteer");
+        }
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const editVolunteer = (id) => {
+    const volunteer = volunteerList.find((volunteer) => volunteer.id === id);
+    setEditUser(volunteer);
+    setEditedUser(volunteer);
+  };
+
+  const handleCancelEdit = () => {
+    setEditUser(null);
+  };
+
+  const handleInputChange = (e) => {
+    setEditedUser((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // Assuming you are using React
+
+const handleSaveEdit = async () => {
+  try {
+    const url = `http://localhost:9090/volunteer/${editUser.id}`;
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedUser),
+    });
+
+    if (res.status === 200) {
+      toast.success("Volunteer updated successfully");
+      setEditUser(null);
+      getVolunteers();
+    } else {
+      throw new Error("Failed to update volunteer");
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   return (
     <>
-      <div className="row justify-content-center">
+      <div
+        className="row justify-content-center"
+        style={{ backgroundColor: "#c3e6cb", height: "100vh" }}
+      >
         <div className="col-sm-12 col-md-11">
-          <div className="row justify-content-between">
-            <img src={img} className="d-block w-100" alt="..." />
-            <p
-              className="mt-3 p-3 pb-0"
-              style={{
-                textIndent: "80px",
-                fontSize: "20px",
-                fontFamily: "PT Serif, serif",
-              }}
-            >
-              Volunteers are the lifeblood of NGOs, breathing life into their
-              missions and driving lasting change. Through their dedication,
-              diverse expertise, and unwavering commitment, volunteers create a
-              powerful force for good. NGOs recognize and appreciate the immense
-              value that volunteers bring to their work, acknowledging that
-              without their tireless efforts, the accomplishments and positive
-              outcomes achieved would be far more challenging to attain. Let us
-              celebrate the incredible contributions of volunteers and continue
-              to nurture a society where the spirit of service thrives,
-              transforming lives and building a brighter future for all.
-            </p>
+          <h1
+            className="form-control-lg d-flex justify-content-center"
+            style={{ color: "white", backgroundColor: "#28a745" }}
+          >
+            Volunteer List
+          </h1>
 
-            <Link to="/volunteer-registration">
-              <input
-                type="button"
-                value="Become a Volunteer"
-                className="w-100 btn btn-lg btn-success mb-3"
-              />
-            </Link>
-          </div>
-          {/* <div className="table-responsive">
-            <table className="table table-striped">
+          <div className="form-control">
+            <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Contact No</th>
+                  <th scope="col">Number</th>
                   <th scope="col">City</th>
                   <th scope="col">State</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {userList.map((item, index) => (
-                  <tr>
+                {volunteerList.map((volunteer, index) => (
+                  <tr key={volunteer.id}>
                     <th scope="row">{index + 1}</th>
-                    <td className="text-capitalize">{item.username}</td>
-                  
-                    <td>{item.email}</td>
-                    <td>{item.mobile}</td>
-                    <td>{item.city}</td>
-                    <td>{item.state}</td>
-                    <td className="fs-5"></td>
+                    <td>{volunteer.name}</td>
+                    <td>{volunteer.email}</td>
+                    <td>{volunteer.mobileNo}</td>
+                    <td>{volunteer.city}</td>
+                    <td>{volunteer.state}</td>
+                    <td className="fs-6">
+                      {editUser && editUser.id === volunteer.id ? (
+                        <>
+                          <input
+                            type="text"
+                            name="name"
+                            value={editedUser.name}
+                            onChange={handleInputChange}
+                          />
+                          <input
+                            type="text"
+                            name="email"
+                            value={editedUser.email}
+                            onChange={handleInputChange}
+                          />
+                          <input
+                            type="text"
+                            name="mobileNo"
+                            value={editedUser.mobileNo}
+                            onChange={handleInputChange}
+                          />
+                          <input
+                            type="text"
+                            name="city"
+                            value={editedUser.city}
+                            onChange={handleInputChange}
+                          />
+                          <input
+                            type="text"
+                            name="state"
+                            value={editedUser.state}
+                            onChange={handleInputChange}
+                          />
+                          <button
+                            className="btn"
+                            onClick={handleSaveEdit}
+                            style={{ backgroundColor: "#c3e6cb" }}
+                          >
+                            Save
+                          </button>
+                          <button
+                            className="btn"
+                            onClick={handleCancelEdit}
+                            style={{ backgroundColor: "#c3e6cb" }}
+                          >
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          
+                          <OverlayTrigger
+                            overlay={<Tooltip id="tooltip">Edit Volunteer</Tooltip>}
+                            placement="top"
+                          >
+                            <button
+                              className="btn"
+                              onClick={() => editVolunteer(volunteer.id)}
+                              style={{ backgroundColor: "#c3e6cb", marginRight:"10px" }}
+                            >
+                              <FontAwesomeIcon icon={faUserPen} />
+                            </button>
+                          </OverlayTrigger>
+                          <OverlayTrigger
+                            overlay={
+                              <Tooltip id="tooltip">Delete Volunteer</Tooltip>
+                            }
+                            placement="top"
+                          >
+                            <button
+                              className="btn"
+                              onClick={() => deleteVolunteer(volunteer.id)}
+                              style={{ backgroundColor: "#c3e6cb" }}
+                            >
+                              <FontAwesomeIcon icon={faUserSlash} />
+                            </button>
+                          </OverlayTrigger>
+                        </>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div> */}
+          </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
 
-export default Voluteers;
+export default Volunteers;

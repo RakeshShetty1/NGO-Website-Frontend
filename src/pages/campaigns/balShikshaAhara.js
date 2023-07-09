@@ -1,7 +1,7 @@
 import img3 from "./BalShikshaAhara.jpg";
 import { Link } from "react-router-dom";
 
-const AnganwadiKitProgram = () => {
+const BalShikshaAhara = () => {
   return (
     <div>
       <img src={img3} className=" w-100 p-2" alt="" />
@@ -33,18 +33,17 @@ const AnganwadiKitProgram = () => {
           School breakfast Programme will aid in the enrichment of the
           underprivileged children fostering optimal growth and development.
         </p>
-
       </div>
       <div>
         <div className="card text-center mt-2">
           <div className="card-body bg-success text-light p-3 mb-2">
             <h5 className="card-title">Your kindness makes someones life.</h5>
             <p className="card-text">
-              NEW MOTHERS AND GROWING CHILDREN NEED YOUR SUPPORT. SUPPORT
-              BAL SHIKSHA AHARA PROGRAMME AS GENEROUSLY AS YOU CAN.
+              NEW MOTHERS AND GROWING CHILDREN NEED YOUR SUPPORT. SUPPORT BAL
+              SHIKSHA AHARA PROGRAMME AS GENEROUSLY AS YOU CAN.
             </p>
 
-            <Link to="/registration">
+            <Link to="/donation">
               <input
                 type="button"
                 value=" &#x2764; Donate "
@@ -57,4 +56,4 @@ const AnganwadiKitProgram = () => {
     </div>
   );
 };
-export default AnganwadiKitProgram;
+export default BalShikshaAhara;

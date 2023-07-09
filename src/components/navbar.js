@@ -2,8 +2,14 @@ import favicon from "../Images/icons/logo.png";
 import Modal from "./modal.js";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/login" || location.pathname === "/registration") {
+    return null; // Hide the Navbar for login and register pages
+  }
   return (
     <div style={{ marginBottom: "80px" }}>
       <nav className="navbar fixed-top  navbar-expand-lg bg-body-tertiary">
@@ -26,7 +32,11 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item fs-5">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/home"
+                >
                   Home
                 </Link>
               </li>
@@ -52,7 +62,7 @@ const Navbar = () => {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to="/volunteers"
+                  to="/volunteer-registration"
                 >
                   Volunteer
                 </Link>
@@ -71,49 +81,47 @@ const Navbar = () => {
                 <ul className="dropdown-menu">
                   <li>
                     <Link
-                      to="/mid-day-meal"
+                      to="/swasthya-ahara"
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <a className="dropdown-item " href="#">
-                       Swasthya Ahar
+                        Swasthya Ahar
                       </a>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/breakfast-program"
+                      to="/paushtik-ahara"
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <a className="dropdown-item " href="#">
-                       Paushtik Ahar
+                        Paushtik Ahar
                       </a>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/anganwadi-kit-program"
+                      to="/bal-shiksha-ahara"
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <a className="dropdown-item" href="#">
-                       Bal Shiksha Ahar
+                        Bal Shiksha Ahar
                       </a>
                     </Link>
                   </li>
-                  <li>
-                  </li>
+                  <li></li>
                 </ul>
               </li>
             </ul>
-            <form className="d-flex" role="Donate">
-              <button
-                type="button"
-                className="btn btn-success fs-5"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                &#x2764; Donate
-              </button>
-            </form>
+            <button
+              type="button"
+              className="btn btn-success fs-5"
+              onClick={() => {
+                window.location.href = "http://localhost:3000/donation";
+              }}
+            >
+              &#x2764; Donate
+            </button>
           </div>
         </div>
       </nav>

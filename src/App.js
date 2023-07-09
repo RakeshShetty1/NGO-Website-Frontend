@@ -9,40 +9,37 @@ import Registration from "./pages/registration";
 import Donation from "./pages/donation";
 import Voluteers from "./pages/volunteers";
 import VolunteerRegistration from "./pages/volunteerRegistration";
-import AnganwadiKitProgram from "./pages/campaigns/anganwadiKitProgram";
+import BalShikshaAhara from "./pages/campaigns/balShikshaAhara";
 import FeedHomelessMothers from "./pages/campaigns/feedHomelessMothers";
-import BreakfastProgram from "./pages/campaigns/breakfastProgram";
-import MidDayMeal from "./pages/campaigns/midDayMeal";
-import AdminList from "./pages/adminList";
-
+import PaushtikAhara from "./pages/campaigns/paushtikAhara";
+import SwasthyaAhara from "./pages/campaigns/swasthyaAhara";
+import Donors from "./pages/donors";
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/contactUs" element={<ContactUs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<AdminList />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/donation" element={<Donation />} />
+        <Route path="/donors" element={<Donors />} />
         <Route path="/volunteers" element={<Voluteers />} />
         <Route
           path="/volunteer-registration"
           element={<VolunteerRegistration />}
         />
-        <Route
-          path="/anganwadi-kit-program"
-          element={<AnganwadiKitProgram />}
-        />
+        <Route path="/bal-shiksha-ahara" element={<BalShikshaAhara />} />
         <Route
           path="/feed-homeless-mothers"
           element={<FeedHomelessMothers />}
         />
-        <Route path="/breakfast-program" element={<BreakfastProgram />} />
-        <Route path="/mid-day-meal" element={<MidDayMeal />} />
+        <Route path="/paushtik-ahara" element={<PaushtikAhara />} />
+        <Route path="/swasthya-ahara" element={<SwasthyaAhara />} />
       </Routes>
       <Footer />
     </BrowserRouter>
