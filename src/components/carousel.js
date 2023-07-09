@@ -1,7 +1,6 @@
 import img1 from "../Images/carousel/asset 1.webp";
 import img3 from "../Images/carousel/asset 3.webp";
 import img2 from "../Images/carousel/asset 2.webp";
-import img4 from "../Images/carousel/carousel4.jpg";
 
 const Carousel = () => {
   return (

@@ -153,10 +153,13 @@
 // export default ContactUsForm;
 
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const ContactUsForm = () => {
+  const navigate = useNavigate();
   let formRef = useRef();
   let [isSuccess, setIsSuccess] = useState(false);
   let [isError, setIsError] = useState(false);
@@ -166,7 +169,7 @@ const ContactUsForm = () => {
     email: "",
     message: "",
   });
-
+  
   let handlerUsernameAction = (e) => {
     let newuser = { ...user, username: e.target.value };
     setUser(newuser);
@@ -215,7 +218,7 @@ const ContactUsForm = () => {
         toast.success("Thank you for contacting us");
         setIsSuccess(true);
         setTimeout(() => {
-          setIsSuccess(false);
+          navigate("/home");
         }, 1000);
         formRef.current.reset();
         formRef.current.classList.remove("was-validated");
@@ -272,6 +275,7 @@ const ContactUsForm = () => {
                   rows="5"
                   className="form-control shadow p-3 mb-5 bg-body-tertiary rounded"
                   placeholder="Message*"
+                  minLength={15}
                   required
                   value={user.message}
                   onChange={handlerMessageAction}

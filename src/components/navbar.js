@@ -7,7 +7,11 @@ import { useLocation } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
 
-  if (location.pathname === "/login" || location.pathname === "/registration") {
+  if (
+    location.pathname === "/login" ||
+    location.pathname === "/" ||
+    location.pathname === "/registration"
+  ) {
     return null; // Hide the Navbar for login and register pages
   }
   return (
@@ -116,11 +120,21 @@ const Navbar = () => {
             <button
               type="button"
               className="btn btn-success fs-5"
+              style={{ marginRight: "5px" }}
               onClick={() => {
                 window.location.href = "http://localhost:3000/donation";
               }}
             >
               &#x2764; Donate
+            </button>
+            <button
+              type="button"
+              className="btn btn-success fs-5"
+              onClick={() => {
+                window.location.href = "http://localhost:3000/login";
+              }}
+            >
+              Log Out
             </button>
           </div>
         </div>

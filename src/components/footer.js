@@ -26,7 +26,7 @@ const Footer = () => {
             <h5 style={{ color: "#009933" }}>Links</h5>
             <ul className="list-unstyled">
               <li>
-                <Link to="/"  style={{textDecoration:"none",color:"#b8bbc9"}} >Home</Link>
+                <Link to="/home"  style={{textDecoration:"none",color:"#b8bbc9"}} >Home</Link>
               </li>
               <li>
                 <Link to="/aboutUs"  style={{textDecoration:"none",color:"#b8bbc9"}}>About</Link>

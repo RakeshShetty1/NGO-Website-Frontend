@@ -2,7 +2,7 @@ import card1 from "../Images/cards/asset 9.webp";
 import card2 from "../Images/cards/asset 10.webp";
 import card3 from "../Images/cards/asset 11.webp";
 import { Link } from "react-router-dom";
-import './cards.css';
+import "./cards.css";
 
 const Cards = () => {
   return (
@@ -15,7 +15,7 @@ const Cards = () => {
         <div className="card-footer text-center">
           <small className="text-body-secondary">
             <small className="text-body-secondary">
-              <Link to="/mid-day-meal">
+              <Link to="/swasthya-ahara">
                 <input
                   type="button"
                   className="btn btn-success"
@@ -35,7 +35,7 @@ const Cards = () => {
         <div className="card-footer text-center">
           <small className="text-body-secondary">
             <small className="text-body-secondary">
-              <Link to="/breakfast-program ">
+              <Link to="/paushtik-ahara">
                 <input
                   type="button"
                   className="btn btn-success"
@@ -54,7 +54,7 @@ const Cards = () => {
         <img src={card3} className="card-img-top pb-2" alt="..." />
         <div className="card-footer text-center">
           <small className="text-body-secondary">
-            <Link to="/anganwadi-kit-program">
+            <Link to="/bal-shiksha-ahara">
               <input
                 type="button"
                 className="btn btn-success"

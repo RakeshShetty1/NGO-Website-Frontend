@@ -59,7 +59,7 @@
 //           >
 //             Volunteer List
 //           </h1>
-         
+
 //           <div className="form-control">
 //             <table className="table">
 //               <thead>
@@ -117,6 +117,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -181,28 +182,28 @@ function Volunteers() {
 
   // Assuming you are using React
 
-const handleSaveEdit = async () => {
-  try {
-    const url = `http://localhost:9090/volunteer/${editUser.id}`;
-    const res = await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editedUser),
-    });
+  const handleSaveEdit = async () => {
+    try {
+      const url = `http://localhost:9090/volunteer/${editUser.id}`;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editedUser),
+      });
 
-    if (res.status === 200) {
-      toast.success("Volunteer updated successfully");
-      setEditUser(null);
-      getVolunteers();
-    } else {
-      throw new Error("Failed to update volunteer");
+      if (res.status === 200) {
+        toast.success("Volunteer updated successfully");
+        setEditUser(null);
+        getVolunteers();
+      } else {
+        throw new Error("Failed to update volunteer");
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
-  } catch (error) {
-    toast.error(error.message);
-  }
-};
+  };
 
   return (
     <>
@@ -276,29 +277,33 @@ const handleSaveEdit = async () => {
                           <button
                             className="btn"
                             onClick={handleSaveEdit}
-                            style={{ backgroundColor: "#c3e6cb" }}
+                            style={{ backgroundColor: "#c3e6cb", marginLeft:"4px", marginRight:"4px" }}
                           >
-                            Save
+                            <FontAwesomeIcon icon={faCheck} />
                           </button>
                           <button
                             className="btn"
                             onClick={handleCancelEdit}
                             style={{ backgroundColor: "#c3e6cb" }}
                           >
-                            Cancel
+                            <FontAwesomeIcon icon={faTimes} />
                           </button>
                         </>
                       ) : (
                         <>
-                          
                           <OverlayTrigger
-                            overlay={<Tooltip id="tooltip">Edit Volunteer</Tooltip>}
+                            overlay={
+                              <Tooltip id="tooltip">Edit Volunteer</Tooltip>
+                            }
                             placement="top"
                           >
                             <button
                               className="btn"
                               onClick={() => editVolunteer(volunteer.id)}
-                              style={{ backgroundColor: "#c3e6cb", marginRight:"10px" }}
+                              style={{
+                                backgroundColor: "#c3e6cb",
+                                marginRight: "10px",
+                              }}
                             >
                               <FontAwesomeIcon icon={faUserPen} />
                             </button>

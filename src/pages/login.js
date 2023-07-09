@@ -54,7 +54,7 @@ function Login() {
         if (result) {
           localStorage.setItem("loginStatus", "true");
           if (
-            user.email === "rakesh333@gmail.com" &&
+            user.email === "rakesh8291@gmail.com" &&
             user.password === "rakesh@123"
           ) {
             toast.success("Welcome admin");
@@ -62,7 +62,7 @@ function Login() {
               navigate("/donors", { replace: true });
             }, 1000);
           } else if (
-            user.email === "gitesh122@gmail.com" &&
+            user.email === "gitesh333@gmail.com" &&
             user.password === "gitesh@123"
           ) {
             toast.success("Welcome admin");

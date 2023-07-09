@@ -350,6 +350,14 @@ function Registration() {
             onChange={handleUsernameChange}
             required
           />
+              <input
+            type="email"
+            className="form-control form-control-lg mb-3"
+            placeholder="Enter Email"
+            value={user.email}
+            onChange={handleEmailChange}
+            required
+          />
 
           <input
             type="password"
@@ -360,20 +368,13 @@ function Registration() {
             required
           />
 
-          <input
-            type="email"
-            className="form-control form-control-lg mb-3"
-            placeholder="Enter Email"
-            value={user.email}
-            onChange={handleEmailChange}
-            required
-          />
+      
 
           <input
             type="text"
             className="form-control form-control-lg mb-3"
             placeholder="Enter Mobile"
-            pattern="[0-9]{10}"
+            pattern="[6789][0-9]{9}"
             value={user.mobileNumber} // Updated property name
             onChange={handleMobileChange}
             required
