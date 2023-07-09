@@ -1,0 +1,4 @@
+.blur{
+    background-image:url(../Images/Footer/footerImage.webp);
+    filter: blur();
+}
