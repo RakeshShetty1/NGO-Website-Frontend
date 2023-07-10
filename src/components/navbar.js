@@ -169,17 +169,18 @@ const Navbar = () => {
   const handleButtonClick = (path, event) => {
     if (!isLoggedIn) {
       event.preventDefault();
-      navigate("/login");
+      navigate("/home");
     } else if (!path) {
       event.preventDefault();
     } else {
       navigate(path);
+      
     }
   };
 
   if (
     location.pathname === "/login" ||
-    location.pathname === "/" ||
+    // location.pathname === "/" ||
     location.pathname === "/registration"
   ) {
     return null; // Hide the Navbar for login and register pages

@@ -61,22 +61,6 @@ function Donors() {
           >
             Donor List
           </h1>
-          {/* <Link to="/home" style={{ color: "#155724", textDecoration: "none" }}>
-            <OverlayTrigger overlay={<Tooltip id="tooltip">Home</Tooltip>} placement="bottom">
-              <button
-                className="btn"
-                type="button"
-                style={{
-                  color: "#c3e6cb",
-                  background: "#155724",
-                  marginRight: 2,
-                  marginBottom: "5px",
-                }}
-              >
-                <FontAwesomeIcon icon={faHome} />
-              </button>
-            </OverlayTrigger>
-          </Link> */}
           <div className="form-control">
             <table className="table">
               <thead>

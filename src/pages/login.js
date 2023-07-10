@@ -57,22 +57,22 @@ function Login() {
             user.email === "rakesh8291@gmail.com" &&
             user.password === "rakesh@123"
           ) {
-            toast.success("Welcome admin");
+            toast.success("Welcome Rakesh");
             setTimeout(() => {
-              navigate("/donors", { replace: true });
+              navigate("/volunteers", { replace: true });
             }, 1000);
           } else if (
             user.email === "gitesh333@gmail.com" &&
             user.password === "gitesh@123"
           ) {
-            toast.success("Welcome admin");
+            toast.success("Welcome Gitesh");
             setTimeout(() => {
-              navigate("/volunteers", { replace: true });
+              navigate("/donors", { replace: true });
             }, 1000);
           } else {
             toast.success("Login successful");
             setTimeout(() => {
-              navigate("/donation", { replace: true });
+              navigate("/home", { replace: true });
             }, 1000);
           }
         } else {
@@ -163,32 +163,3 @@ function Login() {
 }
 
 export default Login;
-
-// let loginAction = async () => {
-//   try {
-//     formRef.current.classList.add("was-validated");
-//     let formStatus = formRef.current.checkValidity();
-//     if (!formStatus) {
-//       return;
-//     }
-
-//     let url = `http://localhost:4000/login-by-get?email=${user.email}&password=${user.password}`;
-//     let res = await fetch(url);
-
-//     if (res.status == 500) {
-//       let erroMessage = await res.text();
-//       throw new Error(erroMessage);
-//     }
-
-//     localStorage.setItem("loginStatus", "true");
-//     navigate("/donation", { replace: true });
-//   } catch (err) {
-//     alert(err.message);
-//     setIsError(true);
-//   } finally {
-//     setTimeout(() => {
-//       setIsError(false);
-//       setIsSuccess(false);
-//     }, 1000);
-//   }
-// };
