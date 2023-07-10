@@ -69,7 +69,7 @@ function Donors() {
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Campaign</th>
-                  <th scope="col">Amount</th>
+                  <th scope="col">Amount(in Rs)</th>
                   <th scope="col">Delete</th>
                 </tr>
               </thead>

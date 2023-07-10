@@ -73,6 +73,7 @@ function Login() {
             toast.success("Login successful");
             setTimeout(() => {
               navigate("/home", { replace: true });
+              window.location.reload(); // Reload the page
             }, 1000);
           }
         } else {

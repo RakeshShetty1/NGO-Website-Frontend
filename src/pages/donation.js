@@ -91,7 +91,7 @@ function Donation() {
       >
         <div
           className="fs-2 mb-3 text-center"
-          style={{ fontWeight: "bold", color: "black" }}
+          style={{ fontWeight: "bold", color: "white" }}
         >
           Donation Form
         </div>
